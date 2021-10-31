@@ -8,7 +8,6 @@
           <form class="form-horizontal was-validated" method="POST" action="{{ route('login')}}">
           {{ csrf_field() }}
               <div class="card-body">
-              <h1>Acceder</h1>
               <p class="text-muted">Autopartes Richard</p>
               <div class="form-group mb-3{{$errors->has('usuario' ? 'is-invalid' : '')}}">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
@@ -24,7 +23,7 @@
                 <div class="col-6">
                   <button type="submit" class="btn btn-primary px-4">Acceder</button>                  
                 </div>
-                <div><p><a href="#">Olvidaste tu password?</a></div>
+                <!--<div><p><a href="#">Olvidaste tu password?</a></div>-->
               </div>
             </div>
           </form>

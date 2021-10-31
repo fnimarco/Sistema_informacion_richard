@@ -13,13 +13,17 @@
 
   <link href="css/plantilla.css" rel="stylesheet">
 
-</head>
+
+</head> 
 
 <body class="app flex-row align-items-center">
-  <div class="container">
-    @yield('login')
-  </div>
-
+  <section class="banner">
+   <div class="banner-content">
+     <h1>Bienvenidos a la Empresa Importadora de Autopartes y Motores</h1>
+      @yield('login')
+   </div>
+  </section>
+  
   <!-- Bootstrap and necessary plugins -->
   <script src="js/plantilla.js"></script>
 
