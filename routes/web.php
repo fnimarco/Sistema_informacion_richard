@@ -54,6 +54,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/ingreso/desactivar', 'IngresoController@desactivar');
         Route::get('/ingreso/obtenerCabecera', 'IngresoController@obtenerCabecera');
         Route::get('/ingreso/obtenerDetalles', 'IngresoController@obtenerDetalles');
+        Route::get('/ingreso/pdf/{id}','IngresoController@pdf')->name('ingreso_pdf');
 
     });
 
@@ -104,6 +105,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/ingreso/desactivar', 'IngresoController@desactivar');
         Route::get('/ingreso/obtenerCabecera', 'IngresoController@obtenerCabecera');
         Route::get('/ingreso/obtenerDetalles', 'IngresoController@obtenerDetalles');
+        Route::get('/ingreso/pdf/{id}','IngresoController@pdf')->name('ingreso_pdf');
         
         Route::get('/cliente', 'ClienteController@index');
         Route::post('/cliente/registrar', 'ClienteController@store');

@@ -2288,6 +2288,7 @@ Vue.component('dashboard', __webpack_require__(132));
 Vue.component('consultaingreso', __webpack_require__(135));
 Vue.component('consultaventa', __webpack_require__(140));
 Vue.component('notification', __webpack_require__(145));
+Vue.component('consultapbi', __webpack_require__(148));
 
 var app = new Vue({
     el: '#app',
@@ -49467,6 +49468,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -49818,98 +49821,104 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c(
-            "table",
-            { staticClass: "table table-bordered table-striped table-sm" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.arrayCategoria, function(categoria) {
-                  return _c("tr", { key: categoria.id }, [
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-warning btn-sm",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                _vm.abrirModal(
-                                  "categoria",
-                                  "actualizar",
-                                  categoria
-                                )
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              { staticClass: "table table-bordered table-striped table-sm" },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.arrayCategoria, function(categoria) {
+                    return _c("tr", { key: categoria.id }, [
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-warning btn-sm",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.abrirModal(
+                                    "categoria",
+                                    "actualizar",
+                                    categoria
+                                  )
+                                }
                               }
-                            }
-                          },
-                          [_c("i", { staticClass: "icon-pencil" })]
-                        ),
-                        _vm._v("  \n                                "),
+                            },
+                            [_c("i", { staticClass: "icon-pencil" })]
+                          ),
+                          _vm._v("  \n                                "),
+                          categoria.condicion
+                            ? [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.desactivarCategoria(categoria.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-trash" })]
+                                )
+                              ]
+                            : [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-info btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.activarCategoria(categoria.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-check" })]
+                                )
+                              ]
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("td", {
+                        domProps: { textContent: _vm._s(categoria.nombre) }
+                      }),
+                      _vm._v(" "),
+                      _c("td", {
+                        domProps: { textContent: _vm._s(categoria.descripcion) }
+                      }),
+                      _vm._v(" "),
+                      _c("td", [
                         categoria.condicion
-                          ? [
+                          ? _c("div", [
                               _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.desactivarCategoria(categoria.id)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "icon-trash" })]
+                                "span",
+                                { staticClass: "badge badge-success" },
+                                [_vm._v("Activo")]
                               )
-                            ]
-                          : [
+                            ])
+                          : _c("div", [
                               _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-info btn-sm",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.activarCategoria(categoria.id)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "icon-check" })]
+                                "span",
+                                { staticClass: "badge badge-danger" },
+                                [_vm._v("Desactivado")]
                               )
-                            ]
-                      ],
-                      2
-                    ),
-                    _vm._v(" "),
-                    _c("td", {
-                      domProps: { textContent: _vm._s(categoria.nombre) }
-                    }),
-                    _vm._v(" "),
-                    _c("td", {
-                      domProps: { textContent: _vm._s(categoria.descripcion) }
-                    }),
-                    _vm._v(" "),
-                    _c("td", [
-                      categoria.condicion
-                        ? _c("div", [
-                            _c("span", { staticClass: "badge badge-success" }, [
-                              _vm._v("Activo")
                             ])
-                          ])
-                        : _c("div", [
-                            _c("span", { staticClass: "badge badge-danger" }, [
-                              _vm._v("Desactivado")
-                            ])
-                          ])
+                      ])
                     ])
-                  ])
-                })
-              )
-            ]
-          ),
+                  })
+                )
+              ]
+            )
+          ]),
           _vm._v(" "),
           _c("nav", [
             _c(
@@ -50522,9 +50531,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50603,7 +50609,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         cargarPdf: function cargarPdf() {
-            window.open('http://localhost:8000/articulo/listarPdf', '_blank');
+            window.open('/articulo/listarPdf', '_blank');
         },
         selectCategoria: function selectCategoria() {
             var me = this;
@@ -53797,122 +53803,116 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "table-responsive" }, [
-            _c(
-              "table",
-              { staticClass: "table table-bordered table-striped table-sm" },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.arrayArticulo, function(articulo) {
-                    return _c("tr", { key: articulo.id }, [
-                      _c(
-                        "td",
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-warning btn-sm",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.abrirModal(
-                                    "articulo",
-                                    "actualizar",
-                                    articulo
-                                  )
-                                }
+          _c(
+            "table",
+            { staticClass: "table table-bordered table-striped table-sm" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.arrayArticulo, function(articulo) {
+                  return _c("tr", { key: articulo.id }, [
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-warning btn-sm",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.abrirModal(
+                                  "articulo",
+                                  "actualizar",
+                                  articulo
+                                )
                               }
-                            },
-                            [_c("i", { staticClass: "icon-pencil" })]
-                          ),
-                          _vm._v("  \n                                    "),
-                          articulo.condicion
-                            ? [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.desactivarArticulo(articulo.id)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-trash" })]
-                                )
-                              ]
-                            : [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-info btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.activarArticulo(articulo.id)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-check" })]
-                                )
-                              ]
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: { textContent: _vm._s(articulo.codigo) }
-                      }),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: { textContent: _vm._s(articulo.nombre) }
-                      }),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: {
-                          textContent: _vm._s(articulo.nombre_categoria)
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: { textContent: _vm._s(articulo.precio_venta) }
-                      }),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: { textContent: _vm._s(articulo.stock) }
-                      }),
-                      _vm._v(" "),
-                      _c("td", {
-                        domProps: { textContent: _vm._s(articulo.descripcion) }
-                      }),
-                      _vm._v(" "),
-                      _c("td", [
+                            }
+                          },
+                          [_c("i", { staticClass: "icon-pencil" })]
+                        ),
+                        _vm._v("  \n                                "),
                         articulo.condicion
-                          ? _c("div", [
+                          ? [
                               _c(
-                                "span",
-                                { staticClass: "badge badge-success" },
-                                [_vm._v("Activo")]
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger btn-sm",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.desactivarArticulo(articulo.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "icon-trash" })]
                               )
-                            ])
-                          : _c("div", [
+                            ]
+                          : [
                               _c(
-                                "span",
-                                { staticClass: "badge badge-danger" },
-                                [_vm._v("Desactivado")]
+                                "button",
+                                {
+                                  staticClass: "btn btn-info btn-sm",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.activarArticulo(articulo.id)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "icon-check" })]
                               )
+                            ]
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(articulo.codigo) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(articulo.nombre) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: {
+                        textContent: _vm._s(articulo.nombre_categoria)
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(articulo.precio_venta) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(articulo.stock) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(articulo.descripcion) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", [
+                      articulo.condicion
+                        ? _c("div", [
+                            _c("span", { staticClass: "badge badge-success" }, [
+                              _vm._v("Activo")
                             ])
-                      ])
+                          ])
+                        : _c("div", [
+                            _c("span", { staticClass: "badge badge-danger" }, [
+                              _vm._v("Desactivado")
+                            ])
+                          ])
                     ])
-                  })
-                )
-              ]
-            )
-          ]),
+                  ])
+                })
+              )
+            ]
+          ),
           _vm._v(" "),
           _c("nav", [
             _c(
@@ -59280,6 +59280,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -59395,6 +59398,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var me = this;
             me.loading = true;
             me.idproveedor = val1.id;
+        },
+        pdfIngreso: function pdfIngreso(id) {
+            window.open('http://127.0.0.1:8000/ingreso/pdf/' + id + ',' + '_blank');
         },
         buscarArticulo: function buscarArticulo() {
             var me = this;
@@ -59812,6 +59818,22 @@ var render = function() {
                                   _vm._v(
                                     "  \n                                    "
                                   ),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-info btn-sm",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.pdfIngreso(ingreso.id)
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "icon-doc" })]
+                                  ),
+                                  _vm._v(
+                                    "  \n                                    "
+                                  ),
                                   ingreso.estado == "Registrado"
                                     ? [
                                         _c(
@@ -59872,12 +59894,6 @@ var render = function() {
                               _vm._v(" "),
                               _c("td", {
                                 domProps: { textContent: _vm._s(ingreso.total) }
-                              }),
-                              _vm._v(" "),
-                              _c("td", {
-                                domProps: {
-                                  textContent: _vm._s(ingreso.impuesto)
-                                }
                               }),
                               _vm._v(" "),
                               _c("td", {
@@ -59980,7 +59996,7 @@ var render = function() {
               ? [
                   _c("div", { staticClass: "card-body" }, [
                     _c("div", { staticClass: "form-group row border" }, [
-                      _c("div", { staticClass: "col-md-9" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
                         _c(
                           "div",
                           { staticClass: "form-group" },
@@ -60003,7 +60019,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Tipo Comprobante(*)")]),
                           _vm._v(" "),
@@ -60057,7 +60073,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Número Comprobante(*)")]),
                           _vm._v(" "),
@@ -60083,34 +60099,6 @@ var render = function() {
                             }
                           })
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Impuesto(*)")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.impuesto,
-                              expression: "impuesto"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.impuesto },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.impuesto = $event.target.value
-                            }
-                          }
-                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
@@ -60494,54 +60482,6 @@ var render = function() {
                                           _vm._v(
                                             "Bs. " +
                                               _vm._s(
-                                                (_vm.totalParcial = (
-                                                  _vm.total - _vm.totalImpuesto
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(4),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "Bs. " +
-                                              _vm._s(
-                                                (_vm.totalImpuesto = (
-                                                  _vm.total *
-                                                  _vm.impuesto /
-                                                  (1 + _vm.impuesto)
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(5),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "Bs. " +
-                                              _vm._s(
                                                 (_vm.total = _vm.calcularTotal)
                                               )
                                           )
@@ -60551,7 +60491,7 @@ var render = function() {
                                   ],
                                   2
                                 )
-                              : _c("tbody", [_vm._m(6)])
+                              : _c("tbody", [_vm._m(4)])
                           ]
                         )
                       ])
@@ -60594,7 +60534,7 @@ var render = function() {
                 ? [
                     _c("div", { staticClass: "card-body" }, [
                       _c("div", { staticClass: "form-group row border" }, [
-                        _c("div", { staticClass: "col-md-9" }, [
+                        _c("div", { staticClass: "col-md-12" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", { attrs: { for: "" } }, [
                               _vm._v("Proveedor")
@@ -60606,7 +60546,7 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", [_vm._v("Tipo Comprobante")]),
                             _vm._v(" "),
@@ -60618,7 +60558,7 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", [_vm._v("Número Comprobante")]),
                             _vm._v(" "),
@@ -60628,16 +60568,6 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-3" }, [
-                          _c("label", { attrs: { for: "" } }, [
-                            _vm._v("Impuesto")
-                          ]),
-                          _vm._v(" "),
-                          _c("p", {
-                            domProps: { textContent: _vm._s(_vm.impuesto) }
-                          })
                         ])
                       ]),
                       _vm._v(" "),
@@ -60653,7 +60583,7 @@ var render = function() {
                                   "table table-bordered table-striped table-sm"
                               },
                               [
-                                _vm._m(7),
+                                _vm._m(5),
                                 _vm._v(" "),
                                 _vm.arrayDetalle.length
                                   ? _c(
@@ -60708,54 +60638,7 @@ var render = function() {
                                             }
                                           },
                                           [
-                                            _vm._m(8),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                "Bs. " +
-                                                  _vm._s(
-                                                    (_vm.totalParcial = (
-                                                      _vm.total -
-                                                      _vm.totalImpuesto
-                                                    ).toFixed(2))
-                                                  )
-                                              )
-                                            ])
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "tr",
-                                          {
-                                            staticStyle: {
-                                              "background-color": "#CEECF5"
-                                            }
-                                          },
-                                          [
-                                            _vm._m(9),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                "Bs. " +
-                                                  _vm._s(
-                                                    (_vm.totalImpuesto = (
-                                                      _vm.total * _vm.impuesto
-                                                    ).toFixed(2))
-                                                  )
-                                              )
-                                            ])
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "tr",
-                                          {
-                                            staticStyle: {
-                                              "background-color": "#CEECF5"
-                                            }
-                                          },
-                                          [
-                                            _vm._m(10),
+                                            _vm._m(6),
                                             _vm._v(" "),
                                             _c("td", [
                                               _vm._v("Bs. " + _vm._s(_vm.total))
@@ -60765,7 +60648,7 @@ var render = function() {
                                       ],
                                       2
                                     )
-                                  : _c("tbody", [_vm._m(11)])
+                                  : _c("tbody", [_vm._m(7)])
                               ]
                             )
                           ]
@@ -60949,7 +60832,7 @@ var render = function() {
                       staticClass: "table table-bordered table-striped table-sm"
                     },
                     [
-                      _vm._m(12),
+                      _vm._m(8),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -61105,8 +60988,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Total")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Impuesto")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
     ])
@@ -61134,23 +61015,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Parcial:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Impuesto:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Neto:")])
+      _c("strong", [_vm._v("Total")])
     ])
   },
   function() {
@@ -61186,23 +61051,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { colspan: "3", align: "right" } }, [
-      _c("strong", [_vm._v("Total Parcial:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "3", align: "right" } }, [
-      _c("strong", [_vm._v("Total Impuesto:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "3", align: "right" } }, [
-      _c("strong", [_vm._v("Total Neto:")])
+      _c("strong", [_vm._v("Total:")])
     ])
   },
   function() {
@@ -61908,7 +61757,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         pdfVenta: function pdfVenta(id) {
-            window.open('http://localhost:8000/venta/pdf/' + id + ',' + '_blank');
+            window.open('http://127.0.0.1:8000/venta/pdf/' + id + ',' + '_blank');
         },
         cambiarPagina: function cambiarPagina(page, buscar, criterio) {
             var me = this;
@@ -62020,7 +61869,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 me.tipo_comprobante = 'BOLETA';
                 me.serie_comprobante = '';
                 me.num_comprobante = '';
-                me.impuesto = 0.13;
+                me.impuesto = 0.18;
                 me.total = 0.0;
                 me.idarticulo = 0;
                 me.articulo = '';
@@ -62066,7 +61915,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             me.tipo_comprobante = 'BOLETA';
             me.serie_comprobante = '';
             me.num_comprobante = '';
-            me.impuesto = 0.13;
+            me.impuesto = 0.18;
             me.total = 0.0;
             me.idarticulo = 0;
             me.articulo = '';
@@ -62407,12 +62256,6 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("td", {
-                                domProps: {
-                                  textContent: _vm._s(venta.impuesto)
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("td", {
                                 domProps: { textContent: _vm._s(venta.estado) }
                               })
                             ])
@@ -62510,7 +62353,7 @@ var render = function() {
               ? [
                   _c("div", { staticClass: "card-body" }, [
                     _c("div", { staticClass: "form-group row border" }, [
-                      _c("div", { staticClass: "col-md-9" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
                         _c(
                           "div",
                           { staticClass: "form-group" },
@@ -62533,7 +62376,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Tipo Comprobante(*)")]),
                           _vm._v(" "),
@@ -62575,10 +62418,6 @@ var render = function() {
                                 _vm._v("Boleta")
                               ]),
                               _vm._v(" "),
-                              _c("option", { attrs: { value: "FACTURA" } }, [
-                                _vm._v("Factura")
-                              ]),
-                              _vm._v(" "),
                               _c("option", { attrs: { value: "TICKET" } }, [
                                 _vm._v("Ticket")
                               ])
@@ -62587,7 +62426,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Número Comprobante(*)")]),
                           _vm._v(" "),
@@ -62613,34 +62452,6 @@ var render = function() {
                             }
                           })
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Impuesto(*)")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.impuesto,
-                              expression: "impuesto"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.impuesto },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.impuesto = $event.target.value
-                            }
-                          }
-                        })
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-12" }, [
@@ -63119,54 +62930,6 @@ var render = function() {
                                           _vm._v(
                                             "Bs. " +
                                               _vm._s(
-                                                (_vm.totalParcial = (
-                                                  _vm.total - _vm.totalImpuesto
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(4),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "Bs. " +
-                                              _vm._s(
-                                                (_vm.totalImpuesto = (
-                                                  _vm.total *
-                                                  _vm.impuesto /
-                                                  (1 + _vm.impuesto)
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(5),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "Bs. " +
-                                              _vm._s(
                                                 (_vm.total = _vm.calcularTotal)
                                               )
                                           )
@@ -63176,7 +62939,7 @@ var render = function() {
                                   ],
                                   2
                                 )
-                              : _c("tbody", [_vm._m(6)])
+                              : _c("tbody", [_vm._m(4)])
                           ]
                         )
                       ])
@@ -63219,7 +62982,7 @@ var render = function() {
                 ? [
                     _c("div", { staticClass: "card-body" }, [
                       _c("div", { staticClass: "form-group row border" }, [
-                        _c("div", { staticClass: "col-md-9" }, [
+                        _c("div", { staticClass: "col-md-12" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", { attrs: { for: "" } }, [
                               _vm._v("Cliente")
@@ -63231,7 +62994,7 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", [_vm._v("Tipo Comprobante")]),
                             _vm._v(" "),
@@ -63243,7 +63006,7 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", [_vm._v("Número Comprobante")]),
                             _vm._v(" "),
@@ -63253,16 +63016,6 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4" }, [
-                          _c("label", { attrs: { for: "" } }, [
-                            _vm._v("Impuesto")
-                          ]),
-                          _vm._v(" "),
-                          _c("p", {
-                            domProps: { textContent: _vm._s(_vm.impuesto) }
-                          })
                         ])
                       ]),
                       _vm._v(" "),
@@ -63278,7 +63031,7 @@ var render = function() {
                                   "table table-bordered table-striped table-sm"
                               },
                               [
-                                _vm._m(7),
+                                _vm._m(5),
                                 _vm._v(" "),
                                 _vm.arrayDetalle.length
                                   ? _c(
@@ -63342,54 +63095,7 @@ var render = function() {
                                             }
                                           },
                                           [
-                                            _vm._m(8),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                "Bs. " +
-                                                  _vm._s(
-                                                    (_vm.totalParcial = (
-                                                      _vm.total -
-                                                      _vm.totalImpuesto
-                                                    ).toFixed(2))
-                                                  )
-                                              )
-                                            ])
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "tr",
-                                          {
-                                            staticStyle: {
-                                              "background-color": "#CEECF5"
-                                            }
-                                          },
-                                          [
-                                            _vm._m(9),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                "Bs. " +
-                                                  _vm._s(
-                                                    (_vm.totalImpuesto = (
-                                                      _vm.total * _vm.impuesto
-                                                    ).toFixed(2))
-                                                  )
-                                              )
-                                            ])
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "tr",
-                                          {
-                                            staticStyle: {
-                                              "background-color": "#CEECF5"
-                                            }
-                                          },
-                                          [
-                                            _vm._m(10),
+                                            _vm._m(6),
                                             _vm._v(" "),
                                             _c("td", [
                                               _vm._v("Bs. " + _vm._s(_vm.total))
@@ -63399,7 +63105,7 @@ var render = function() {
                                       ],
                                       2
                                     )
-                                  : _c("tbody", [_vm._m(11)])
+                                  : _c("tbody", [_vm._m(7)])
                               ]
                             )
                           ]
@@ -63583,7 +63289,7 @@ var render = function() {
                       staticClass: "table table-bordered table-striped table-sm"
                     },
                     [
-                      _vm._m(12),
+                      _vm._m(8),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -63739,8 +63445,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Total")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Impuesto")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
     ])
@@ -63770,23 +63474,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { colspan: "5", align: "right" } }, [
-      _c("strong", [_vm._v("Total Parcial:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "5", align: "right" } }, [
-      _c("strong", [_vm._v("Total Impuesto:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "5", align: "right" } }, [
-      _c("strong", [_vm._v("Total Neto:")])
+      _c("strong", [_vm._v("Total")])
     ])
   },
   function() {
@@ -63807,9 +63495,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Artículo")]),
+        _c("th", [_vm._v("Detalle")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Precio")]),
+        _c("th", [_vm._v("Precio Unitario")]),
         _vm._v(" "),
         _c("th", [_vm._v("Cantidad")]),
         _vm._v(" "),
@@ -63824,23 +63512,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Parcial:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Impuesto:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Neto:")])
+      _c("strong", [_vm._v("Total")])
     ])
   },
   function() {
@@ -63940,7 +63612,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -64170,7 +63841,18 @@ var staticRenderFns = [
             ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c("iframe", {
+        attrs: {
+          width: "1140",
+          height: "541.25",
+          src:
+            "https://app.powerbi.com/reportEmbed?reportId=7aff522e-a27c-42a7-b464-884eeb7f4be3&autoAuth=true&ctid=75b0567a-be11-461a-9c74-17e3a5f96741&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVzLW5vcnRoLWNlbnRyYWwtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D",
+          frameborder: "0",
+          allowFullScreen: "true"
+        }
+      })
     ])
   }
 ]
@@ -64282,6 +63964,9 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_select__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_select__);
+//
+//
+//
 //
 //
 //
@@ -64576,6 +64261,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             me.precio = 0;
             me.arrayDetalle = [];
         },
+        pdfIngreso: function pdfIngreso(id) {
+            window.open('http://127.0.0.1:8000/ingreso/pdf/' + id + ',' + '_blank');
+        },
         ocultarDetalle: function ocultarDetalle() {
             this.listado = 1;
         },
@@ -64770,7 +64458,24 @@ var render = function() {
                                     }
                                   },
                                   [_c("i", { staticClass: "icon-eye" })]
-                                )
+                                ),
+                                _vm._v(
+                                  "  \n                                    "
+                                ),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-info btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.pdfIngreso(ingreso.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-doc" })]
+                                ),
+                                _vm._v("  \n                                ")
                               ]),
                               _vm._v(" "),
                               _c("td", {
@@ -64805,12 +64510,6 @@ var render = function() {
                               _vm._v(" "),
                               _c("td", {
                                 domProps: { textContent: _vm._s(ingreso.total) }
-                              }),
-                              _vm._v(" "),
-                              _c("td", {
-                                domProps: {
-                                  textContent: _vm._s(ingreso.impuesto)
-                                }
                               }),
                               _vm._v(" "),
                               _c("td", {
@@ -64913,7 +64612,7 @@ var render = function() {
               ? [
                   _c("div", { staticClass: "card-body" }, [
                     _c("div", { staticClass: "form-group row border" }, [
-                      _c("div", { staticClass: "col-md-9" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "" } }, [
                             _vm._v("Proveedor")
@@ -64925,7 +64624,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Tipo Comprobante")]),
                           _vm._v(" "),
@@ -64937,7 +64636,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Número Comprobante")]),
                           _vm._v(" "),
@@ -64947,16 +64646,6 @@ var render = function() {
                             }
                           })
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Impuesto")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", {
-                          domProps: { textContent: _vm._s(_vm.impuesto) }
-                        })
                       ])
                     ]),
                     _vm._v(" "),
@@ -65023,52 +64712,6 @@ var render = function() {
                                         _vm._m(4),
                                         _vm._v(" "),
                                         _c("td", [
-                                          _vm._v(
-                                            "$ " +
-                                              _vm._s(
-                                                (_vm.totalParcial = (
-                                                  _vm.total - _vm.totalImpuesto
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(5),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "$ " +
-                                              _vm._s(
-                                                (_vm.totalImpuesto = (
-                                                  _vm.total * _vm.impuesto
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(6),
-                                        _vm._v(" "),
-                                        _c("td", [
                                           _vm._v("$ " + _vm._s(_vm.total))
                                         ])
                                       ]
@@ -65076,7 +64719,7 @@ var render = function() {
                                   ],
                                   2
                                 )
-                              : _c("tbody", [_vm._m(7)])
+                              : _c("tbody", [_vm._m(5)])
                           ]
                         )
                       ])
@@ -65148,8 +64791,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Total")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Impuesto")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
     ])
@@ -65175,23 +64816,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { colspan: "3", align: "right" } }, [
-      _c("strong", [_vm._v("Total Parcial:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "3", align: "right" } }, [
-      _c("strong", [_vm._v("Total Impuesto:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "3", align: "right" } }, [
-      _c("strong", [_vm._v("Total Neto:")])
+      _c("strong", [_vm._v("Total")])
     ])
   },
   function() {
@@ -65863,12 +65488,6 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("td", {
-                                domProps: {
-                                  textContent: _vm._s(venta.impuesto)
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("td", {
                                 domProps: { textContent: _vm._s(venta.estado) }
                               })
                             ])
@@ -65966,7 +65585,7 @@ var render = function() {
               ? [
                   _c("div", { staticClass: "card-body" }, [
                     _c("div", { staticClass: "form-group row border" }, [
-                      _c("div", { staticClass: "col-md-9" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "" } }, [
                             _vm._v("Cliente")
@@ -65978,7 +65597,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Tipo Comprobante")]),
                           _vm._v(" "),
@@ -65990,7 +65609,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Número Comprobante")]),
                           _vm._v(" "),
@@ -66000,16 +65619,6 @@ var render = function() {
                             }
                           })
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", { attrs: { for: "" } }, [
-                          _vm._v("Impuesto")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", {
-                          domProps: { textContent: _vm._s(_vm.impuesto) }
-                        })
                       ])
                     ]),
                     _vm._v(" "),
@@ -66085,52 +65694,6 @@ var render = function() {
                                         _vm._m(4),
                                         _vm._v(" "),
                                         _c("td", [
-                                          _vm._v(
-                                            "$ " +
-                                              _vm._s(
-                                                (_vm.totalParcial = (
-                                                  _vm.total - _vm.totalImpuesto
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(5),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "$ " +
-                                              _vm._s(
-                                                (_vm.totalImpuesto = (
-                                                  _vm.total * _vm.impuesto
-                                                ).toFixed(2))
-                                              )
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tr",
-                                      {
-                                        staticStyle: {
-                                          "background-color": "#CEECF5"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(6),
-                                        _vm._v(" "),
-                                        _c("td", [
                                           _vm._v("$ " + _vm._s(_vm.total))
                                         ])
                                       ]
@@ -66138,7 +65701,7 @@ var render = function() {
                                   ],
                                   2
                                 )
-                              : _c("tbody", [_vm._m(7)])
+                              : _c("tbody", [_vm._m(5)])
                           ]
                         )
                       ])
@@ -66210,8 +65773,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Total")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Impuesto")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
     ])
@@ -66232,22 +65793,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Subtotal")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Parcial:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4", align: "right" } }, [
-      _c("strong", [_vm._v("Total Impuesto:")])
     ])
   },
   function() {
@@ -66476,6 +66021,342 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-9de98b3c", module.exports)
+  }
+}
+
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(149)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(151)
+/* template */
+var __vue_template__ = __webpack_require__(152)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ConsultaPB.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7cc2e1de", Component.options)
+  } else {
+    hotAPI.reload("data-v-7cc2e1de", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(150);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("706d8ce3", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7cc2e1de\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ConsultaPB.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7cc2e1de\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ConsultaPB.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n@media (min-width: 600px) {\n.btnagregar {\n        margin-top: 2rem;\n}\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 151 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_select__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_select__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            ingreso_id: 0,
+            idproveedor: 0,
+            proveedor: '',
+            nombre: '',
+            tipo_comprobante: 'BOLETA',
+            serie_comprobante: '',
+            num_comprobante: '',
+            impuesto: 0.13,
+            total: 0.0,
+            totalImpuesto: 0.0,
+            totalParcial: 0.0,
+            arrayIngreso: [],
+            arrayProveedor: [],
+            arrayDetalle: [],
+            listado: 1,
+            modal: 0,
+            tituloModal: '',
+            tipoAccion: 0,
+            errorIngreso: 0,
+            errorMostrarMsjIngreso: [],
+            pagination: {
+                'total': 0,
+                'current_page': 0,
+                'per_page': 0,
+                'last_page': 0,
+                'from': 0,
+                'to': 0
+            },
+            offset: 3,
+            criterio: 'num_comprobante',
+            buscar: '',
+            criterioA: 'nombre',
+            buscarA: '',
+            arrayArticulo: [],
+            idarticulo: 0,
+            codigo: '',
+            articulo: '',
+            precio: 0,
+            cantidad: 0
+        };
+    },
+
+    components: {
+        vSelect: __WEBPACK_IMPORTED_MODULE_0_vue_select___default.a
+    },
+    computed: {
+        isActived: function isActived() {
+            return this.pagination.current_page;
+        },
+        //Calcula los elementos de la paginación
+        pagesNumber: function pagesNumber() {
+            if (!this.pagination.to) {
+                return [];
+            }
+
+            var from = this.pagination.current_page - this.offset;
+            if (from < 1) {
+                from = 1;
+            }
+
+            var to = from + this.offset * 2;
+            if (to >= this.pagination.last_page) {
+                to = this.pagination.last_page;
+            }
+
+            var pagesArray = [];
+            while (from <= to) {
+                pagesArray.push(from);
+                from++;
+            }
+            return pagesArray;
+        },
+        calcularTotal: function calcularTotal() {
+            var resultado = 0.0;
+            for (var i = 0; i < this.arrayDetalle.length; i++) {
+                resultado = resultado + this.arrayDetalle[i].precio * this.arrayDetalle[i].cantidad;
+            }
+            return resultado;
+        }
+    },
+    methods: {
+        listarIngreso: function listarIngreso(page, buscar, criterio) {
+            var me = this;
+            var url = '/ingreso?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio;
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.arrayIngreso = respuesta.ingresos.data;
+                me.pagination = respuesta.pagination;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        cambiarPagina: function cambiarPagina(page, buscar, criterio) {
+            var me = this;
+            //Actualiza la página actual
+            me.pagination.current_page = page;
+            //Envia la petición para visualizar la data de esa página
+            me.listarIngreso(page, buscar, criterio);
+        },
+        mostrarDetalle: function mostrarDetalle() {
+            var me = this;
+            me.listado = 0;
+
+            me.idproveedor = 0;
+            me.tipo_comprobante = 'BOLETA';
+            me.serie_comprobante = '';
+            me.num_comprobante = '';
+            me.impuesto = 0.18;
+            me.total = 0.0;
+            me.idarticulo = 0;
+            me.articulo = '';
+            me.cantidad = 0;
+            me.precio = 0;
+            me.arrayDetalle = [];
+        },
+        pdfIngreso: function pdfIngreso(id) {
+            window.open('http://127.0.0.1:8000/ingreso/pdf/' + id + ',' + '_blank');
+        },
+        ocultarDetalle: function ocultarDetalle() {
+            this.listado = 1;
+        },
+        verIngreso: function verIngreso(id) {
+            var me = this;
+            me.listado = 2;
+
+            //Obtener los datos del ingreso
+            var arrayIngresoT = [];
+            var url = '/ingreso/obtenerCabecera?id=' + id;
+
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                arrayIngresoT = respuesta.ingreso;
+
+                me.proveedor = arrayIngresoT[0]['nombre'];
+                me.tipo_comprobante = arrayIngresoT[0]['tipo_comprobante'];
+                me.serie_comprobante = arrayIngresoT[0]['serie_comprobante'];
+                me.num_comprobante = arrayIngresoT[0]['num_comprobante'];
+                me.impuesto = arrayIngresoT[0]['impuesto'];
+                me.total = arrayIngresoT[0]['total'];
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            //Obtener los datos de los detalles 
+            var urld = '/ingreso/obtenerDetalles?id=' + id;
+
+            axios.get(urld).then(function (response) {
+                console.log(response);
+                var respuesta = response.data;
+                me.arrayDetalle = respuesta.detalles;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.listarIngreso(1, this.buscar, this.criterio);
+    }
+});
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", { staticClass: "main" }, [
+      _c("ol", { staticClass: "breadcrumb" }, [
+        _c("li", { staticClass: "breadcrumb-item" }, [
+          _c("a", { attrs: { href: "/" } }, [_vm._v("Escritorio")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("i", { staticClass: "fa fa-align-justify" }),
+            _vm._v(" Consulta Power BI\n            ")
+          ]),
+          _vm._v(" "),
+          _c("iframe", {
+            attrs: {
+              width: "1140",
+              height: "541.25",
+              src:
+                "https://app.powerbi.com/reportEmbed?reportId=7aff522e-a27c-42a7-b464-884eeb7f4be3&autoAuth=true&ctid=75b0567a-be11-461a-9c74-17e3a5f96741&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVzLW5vcnRoLWNlbnRyYWwtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D",
+              frameborder: "0",
+              allowFullScreen: "true"
+            }
+          })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7cc2e1de", module.exports)
   }
 }
 

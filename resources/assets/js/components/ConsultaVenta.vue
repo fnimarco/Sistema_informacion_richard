@@ -38,7 +38,7 @@
                                         <th>Número Comprobante</th>
                                         <th>Fecha Hora</th>
                                         <th>Total</th>
-                                        <th>Impuesto</th>
+                                        <!--th>Impuesto</th-->
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
@@ -59,7 +59,7 @@
                                         <td v-text="venta.num_comprobante"></td>
                                         <td v-text="venta.fecha_hora"></td>
                                         <td v-text="venta.total"></td>
-                                        <td v-text="venta.impuesto"></td>
+                                        <!--td v-text="venta.impuesto"></td-->
                                         <td v-text="venta.estado"></td>
                                     </tr>                                
                                 </tbody>
@@ -85,13 +85,13 @@
                     <template v-else-if="listado==2">
                     <div class="card-body">
                         <div class="form-group row border">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Cliente</label>
                                     <p v-text="cliente"></p>
                                 </div>
                             </div>                            
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tipo Comprobante</label>
                                     <p v-text="tipo_comprobante"></p>
@@ -103,16 +103,16 @@
                                     <p v-text="serie_comprobante"></p>
                                 </div>
                             </div-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Número Comprobante</label>
                                     <p v-text="num_comprobante"></p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <!--div class="col-md-4">
                                 <label for="">Impuesto</label>
                                 <p v-text="impuesto"></p>
-                            </div>
+                            </div-->
                         </div>
                         <div class="form-group row border">
                             <div class="table-responsive col-md-12">
@@ -140,14 +140,14 @@
                                                 {{detalle.precio*detalle.cantidad-detalle.descuento}}
                                             </td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                        <!--tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Parcial:</strong></td>
                                             <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
                                             <td>$ {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
-                                        </tr>
+                                        </tr-->
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Neto:</strong></td>
                                             <td>$ {{total}}</td>

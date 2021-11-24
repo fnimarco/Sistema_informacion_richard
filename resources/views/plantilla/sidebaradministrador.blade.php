@@ -60,6 +60,9 @@
                             <li @click="menu=10" class="nav-item">
                                 <a class="nav-link" href="#"><i class="icon-chart"></i> Reporte Ventas</a>
                             </li>
+                            <li @click="menu=13" class="nav-item">
+                                <a class="nav-link" href="#"><i class="icon-chart"></i> Reporte Power BI</a>
+                            </li>
                         </ul>
                     </li>
                     <li @click="menu=11" class="nav-item">

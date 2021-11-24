@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte de venta</title>
+    <title>Reporte de ingreso</title>
     <style>
         body {
         /*position: relative;*/
@@ -112,7 +112,7 @@
         }
     </style>
     <body>
-        @foreach ($venta as $v)
+        @foreach ($ingreso as $v)
         <header>
             <div id="logo">
                 <img src="img/logo.png" alt="incanatoIT" id="imagen">
@@ -138,7 +138,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th><p id="cliente">Nombre. {{$v->nombre}}<br>
+                            <th><p id="cliente">Nombre: {{$v->nombre}}<br>
                             {{$v->tipo_documento}}: {{$v->num_documento}}<br>
                             Dirección: {{$v->direccion}}<br>
                             Teléfono: {{$v->telefono}}<br>
@@ -155,7 +155,7 @@
                 <table id="facvendedor">
                     <thead>
                         <tr id="fv">
-                            <th>VENDEDOR</th>
+                            <th>USUARIO</th>
                             <th>FECHA</th>
                         </tr>
                     </thead>
@@ -177,7 +177,6 @@
                             <th>CANT</th>
                             <th>DESCRIPCION</th>
                             <th>PRECIO UNIT</th>
-                            <!--th>DESC.</th-->
                             <th>SUBTOTAL</th>
                         </tr>
                     </thead>
@@ -187,27 +186,12 @@
                             <td>{{$det->cantidad}}</td>
                             <td>{{$det->articulo}}</td>
                             <td>{{$det->precio}}</td>
-                            <!--td>{{$det->descuento}}</td-->
                             <td>{{$det->cantidad*$det->precio-$det->descuento}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
-                        @foreach ($venta as $v)
-                        <!--tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>SUBTOTAL</th>
-                            <td>Bs {{round($v->total-($v->total*$v->impuesto),2)}}</td>
-                        </tr-->
-                        <!--tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>Impuesto</th>
-                            <td>Bs {{round($v->total*$v->impuesto,2)}}</td>
-                        </tr-->
+                        @foreach ($ingreso as $v)
                         <tr>
                             <th></th>
                             <th></th>

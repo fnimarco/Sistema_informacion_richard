@@ -7,7 +7,6 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                
             </div>
             <div class="car-body">
                 <div class="row">
@@ -47,7 +46,7 @@
             </div>
         </div>
     </div>
-
+<iframe width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=7aff522e-a27c-42a7-b464-884eeb7f4be3&autoAuth=true&ctid=75b0567a-be11-461a-9c74-17e3a5f96741&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVzLW5vcnRoLWNlbnRyYWwtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe>
 </main>
 </template>
 <script>

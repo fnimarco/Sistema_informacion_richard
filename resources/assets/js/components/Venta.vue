@@ -41,7 +41,7 @@
                                         <th>Número Comprobante</th>
                                         <th>Fecha Hora</th>
                                         <th>Total</th>
-                                        <th>Impuesto</th>
+                                        <!--th>Impuesto</th-->
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
@@ -67,7 +67,7 @@
                                         <td v-text="venta.num_comprobante"></td>
                                         <td v-text="venta.fecha_hora"></td>
                                         <td v-text="venta.total"></td>
-                                        <td v-text="venta.impuesto"></td>
+                                        <!--td v-text="venta.impuesto"></td-->
                                         <td v-text="venta.estado"></td>
                                     </tr>                                
                                 </tbody>
@@ -93,7 +93,7 @@
                     <template v-else-if="listado==0">
                     <div class="card-body">
                         <div class="form-group row border">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Cliente(*)</label>
                                     <v-select
@@ -106,14 +106,18 @@
 
                                     </v-select>
                                 </div>
-                            </div>                            
-                            <div class="col-md-4">
+                            </div>
+                            <!--div class="col-md-3">
+                                <label for="">Impuesto(*)</label>
+                                <input type="text" class="form-control" v-model="impuesto">
+                            </div-->
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tipo Comprobante(*)</label>
                                     <select class="form-control" v-model="tipo_comprobante">
                                         <option value="0">Seleccione</option>
                                         <option value="BOLETA">Boleta</option>
-                                        <option value="FACTURA">Factura</option>
+                                        <!--option value="FACTURA">Factura</option-->
                                         <option value="TICKET">Ticket</option>
                                     </select>
                                 </div>
@@ -124,15 +128,11 @@
                                     <input type="text" class="form-control" v-model="serie_comprobante" placeholder="000x">
                                 </div>
                             </div-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Número Comprobante(*)</label>
                                     <input type="text" class="form-control" v-model="num_comprobante" placeholder="000xx">
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Impuesto(*)</label>
-                                <input type="text" class="form-control" v-model="impuesto">
                             </div>
                             <div class="col-md-12">
                                 <div v-show="errorVenta" class="form-group row div-error">
@@ -216,16 +216,16 @@
                                                 {{detalle.precio*detalle.cantidad-detalle.descuento}}
                                             </td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                        <!--tr style="background-color: #CEECF5;">
                                             <td colspan="5" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>Bs. {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
+                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="5" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>Bs. {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
-                                        </tr>
+                                            <td>$ {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
+                                        </tr-->
                                         <tr style="background-color: #CEECF5;">
-                                            <td colspan="5" align="right"><strong>Total Neto:</strong></td>
+                                            <td colspan="5" align="right"><strong>Total</strong></td>
                                             <td>Bs. {{total=calcularTotal}}</td>
                                         </tr>
                                     </tbody>
@@ -252,13 +252,17 @@
                     <template v-else-if="listado==2">
                     <div class="card-body">
                         <div class="form-group row border">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Cliente</label>
                                     <p v-text="cliente"></p>
                                 </div>
-                            </div>                           
-                            <div class="col-md-4">
+                            </div>
+                            <!--div class="col-md-3">
+                                <label for="">Impuesto</label>
+                                <p v-text="impuesto"></p>
+                            </div-->
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tipo Comprobante</label>
                                     <p v-text="tipo_comprobante"></p>
@@ -270,15 +274,11 @@
                                     <p v-text="serie_comprobante"></p>
                                 </div>
                             </div-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Número Comprobante</label>
                                     <p v-text="num_comprobante"></p>
                                 </div>
-                            </div>
-                             <div class="col-md-4">
-                                <label for="">Impuesto</label>
-                                <p v-text="impuesto"></p>
                             </div>
                         </div>
                         <div class="form-group row border">
@@ -286,8 +286,8 @@
                                 <table class="table table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Artículo</th>
-                                            <th>Precio</th>
+                                            <th>Detalle</th>
+                                            <th>Precio Unitario</th>
                                             <th>Cantidad</th>
                                             <th>Descuento</th>
                                             <th>Subtotal</th>
@@ -307,16 +307,16 @@
                                                 {{detalle.precio*detalle.cantidad-detalle.descuento}}
                                             </td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                        <!--tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Parcial:</strong></td>
-                                            <td>Bs. {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
+                                            <td>$ {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
-                                            <td>Bs. {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
-                                        </tr>
+                                            <td>$ {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
+                                        </tr-->
                                         <tr style="background-color: #CEECF5;">
-                                            <td colspan="4" align="right"><strong>Total Neto:</strong></td>
+                                            <td colspan="4" align="right"><strong>Total</strong></td>
                                             <td>Bs. {{total}}</td>
                                         </tr>
                                     </tbody>
@@ -561,7 +561,7 @@
                 });
             },
             pdfVenta(id){
-                window.open('http://localhost:8000/venta/pdf/'+ id + ',' + '_blank');
+                window.open('http://127.0.0.1:8000/venta/pdf/'+ id + ',' + '_blank');
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
@@ -681,7 +681,7 @@
                     me.tipo_comprobante='BOLETA';
                     me.serie_comprobante='';
                     me.num_comprobante='';
-                    me.impuesto=0.13;
+                    me.impuesto=0.18;
                     me.total=0.0;
                     me.idarticulo=0;
                     me.articulo='';
@@ -728,7 +728,7 @@
                 me.tipo_comprobante='BOLETA';
                 me.serie_comprobante='';
                 me.num_comprobante='';
-                me.impuesto=0.13;
+                me.impuesto=0.18;
                 me.total=0.0;
                 me.idarticulo=0;
                 me.articulo='';

@@ -8,7 +8,7 @@
           <form class="form-horizontal was-validated" method="POST" action="{{ route('login')}}">
           {{ csrf_field() }}
               <div class="card-body">
-              <p class="text-muted">Autopartes Richard</p>
+              <p class="text-muted">Inicio Sesión</p>
               <div class="form-group mb-3{{$errors->has('usuario' ? 'is-invalid' : '')}}">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
                 <input type="text" value="{{old('usuario')}}" name="usuario" id="usuario" class="form-control" placeholder="Usuario">

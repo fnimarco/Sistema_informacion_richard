@@ -47,6 +47,10 @@
                 <consultaventa></consultaventa>
             </template>
 
+            <template v-if="menu==13">
+                <consultapbi></consultapbi>
+            </template>
+
             <template v-if="menu==11">
                 <h1>Ayuda</h1>
             </template>

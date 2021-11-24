@@ -142,4 +142,26 @@ class IngresoController extends Controller
         $ingreso->estado = 'Anulado';
         $ingreso->save();
     }
+
+    public function pdf(Request $request,$id){
+        $ingreso = Ingreso::join('personas','ingresos.idproveedor','=','personas.id')
+        ->join('users','ingresos.idusuario','=','users.id')
+        ->select('ingresos.id','ingresos.tipo_comprobante','ingresos.serie_comprobante',
+        'ingresos.num_comprobante','ingresos.fecha_hora','ingresos.created_at','ingresos.impuesto','ingresos.total',
+        'ingresos.estado','personas.nombre','personas.tipo_documento','personas.num_documento',
+        'personas.direccion','personas.email',
+        'personas.telefono','users.usuario')
+        ->where('ingresos.id','=',$id)
+        ->orderBy('ingresos.id', 'desc')->take(1)->get();
+
+        $detalles = DetalleIngreso::join('articulos','detalle_ingresos.idarticulo','=','articulos.id')
+        ->select('detalle_ingresos.cantidad','detalle_ingresos.precio','articulos.nombre as articulo')
+        ->where('detalle_ingresos.idingreso','=',$id)
+        ->orderBy('detalle_ingresos.id', 'desc')->get();
+
+        $numingreso=Ingreso::select('num_comprobante')->where('id',$id)->get();
+
+        $pdf = \PDF::loadView('pdf.ingreso',['ingreso'=>$ingreso,'detalles'=>$detalles]);
+        return $pdf->download('ingreso-'.$numingreso[0]->num_comprobante.'.pdf');
+    }
 }

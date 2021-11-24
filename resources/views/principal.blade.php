@@ -30,12 +30,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <ul class="nav navbar-nav d-md-down-none">
-            <li class="nav-item px-3">
+            <!--<li class="nav-item px-3">
                 <a class="nav-link" href="#">Escritorio</a>
-            </li>
-            <li class="nav-item px-3">
-                <a class="nav-link" href="#">Configuraciones</a>
-            </li>
+            </li>-->
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <notification :notifications="notifications"></notification>
@@ -80,8 +77,8 @@
     </div>   
     </div>
     <footer class="app-footer">
-        <span><a href="http://www.incanatoit.com/">AutopartesRichard</a> &copy; 2020</span>
-        <span class="ml-auto">Desarrollado por <a href="http://fnimarco@gmail.com/">MarcoMS</a></span>
+        <span><a href="http://www.autopartesrichrad.com/">AutopartesRichard</a> &copy; 2021</span>
+        <span class="ml-auto">Desarrollado por <a href="https://github.com/fnimarco">MarcoMS</a></span>
     </footer>
     
 

@@ -41,7 +41,7 @@
                                         <th>Número Comprobante</th>
                                         <th>Fecha Hora</th>
                                         <th>Total</th>
-                                        <th>Impuesto</th>
+                                        <!--th>Impuesto</th-->
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
@@ -50,6 +50,9 @@
                                         <td>
                                             <button type="button" @click="verIngreso(ingreso.id)" class="btn btn-success btn-sm">
                                             <i class="icon-eye"></i>
+                                            </button> &nbsp;
+                                            <button type="button" @click="pdfIngreso(ingreso.id)" class="btn btn-info btn-sm">
+                                            <i class="icon-doc"></i>
                                             </button> &nbsp;
                                             <template v-if="ingreso.estado=='Registrado'">
                                                 <button type="button" class="btn btn-danger btn-sm" @click="desactivarIngreso(ingreso.id)">
@@ -64,7 +67,7 @@
                                         <td v-text="ingreso.num_comprobante"></td>
                                         <td v-text="ingreso.fecha_hora"></td>
                                         <td v-text="ingreso.total"></td>
-                                        <td v-text="ingreso.impuesto"></td>
+                                        <!--td v-text="ingreso.impuesto"></td-->
                                         <td v-text="ingreso.estado"></td>
                                     </tr>                                
                                 </tbody>
@@ -90,7 +93,7 @@
                     <template v-else-if="listado==0">
                     <div class="card-body">
                         <div class="form-group row border">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Proveedor(*)</label>
                                     <v-select
@@ -104,7 +107,7 @@
                                     </v-select>
                                 </div>
                             </div>                           
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tipo Comprobante(*)</label>
                                     <select class="form-control" v-model="tipo_comprobante">
@@ -121,16 +124,16 @@
                                     <input type="text" class="form-control" v-model="serie_comprobante" placeholder="000x">
                                 </div>
                             </div-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Número Comprobante(*)</label>
                                     <input type="text" class="form-control" v-model="num_comprobante" placeholder="000xx">
                                 </div>
                             </div>
-                             <div class="col-md-4">
+                            <!--div class="col-md-4">
                                 <label for="">Impuesto(*)</label>
                                 <input type="text" class="form-control" v-model="impuesto">
-                            </div>
+                            </div-->
                             <div class="col-md-12">
                                 <div v-show="errorIngreso" class="form-group row div-error">
                                     <div class="text-center text-error">
@@ -201,16 +204,16 @@
                                                 {{detalle.precio*detalle.cantidad}}
                                             </td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                        <!--tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Parcial:</strong></td>
                                             <td>Bs. {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="4" align="right"><strong>Total Impuesto:</strong></td>
                                             <td>Bs. {{totalImpuesto=((total*impuesto)/(1+impuesto)).toFixed(2)}}</td>
-                                        </tr>
+                                        </tr-->
                                         <tr style="background-color: #CEECF5;">
-                                            <td colspan="4" align="right"><strong>Total Neto:</strong></td>
+                                            <td colspan="4" align="right"><strong>Total</strong></td>
                                             <td>Bs. {{total=calcularTotal}}</td>
                                         </tr>
                                     </tbody>
@@ -237,13 +240,13 @@
                     <template v-else-if="listado==2">
                     <div class="card-body">
                         <div class="form-group row border">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Proveedor</label>
                                     <p v-text="proveedor"></p>
                                 </div>
                             </div>                            
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tipo Comprobante</label>
                                     <p v-text="tipo_comprobante"></p>
@@ -255,16 +258,16 @@
                                     <p v-text="serie_comprobante"></p>
                                 </div>
                             </div-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Número Comprobante</label>
                                     <p v-text="num_comprobante"></p>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!--div class="col-md-3">
                                 <label for="">Impuesto</label>
                                 <p v-text="impuesto"></p>
-                            </div>
+                            </div-->
                         </div>
                         <div class="form-group row border">
                             <div class="table-responsive col-md-12">
@@ -289,16 +292,16 @@
                                                 {{detalle.precio*detalle.cantidad}}
                                             </td>
                                         </tr>
-                                        <tr style="background-color: #CEECF5;">
+                                        <!--tr style="background-color: #CEECF5;">
                                             <td colspan="3" align="right"><strong>Total Parcial:</strong></td>
                                             <td>Bs. {{totalParcial=(total-totalImpuesto).toFixed(2)}}</td>
                                         </tr>
                                         <tr style="background-color: #CEECF5;">
                                             <td colspan="3" align="right"><strong>Total Impuesto:</strong></td>
                                             <td>Bs. {{totalImpuesto=((total*impuesto)).toFixed(2)}}</td>
-                                        </tr>
+                                        </tr-->
                                         <tr style="background-color: #CEECF5;">
-                                            <td colspan="3" align="right"><strong>Total Neto:</strong></td>
+                                            <td colspan="3" align="right"><strong>Total:</strong></td>
                                             <td>Bs. {{total}}</td>
                                         </tr>
                                     </tbody>
@@ -517,6 +520,9 @@
                 let me = this;
                 me.loading = true;
                 me.idproveedor = val1.id;
+            },
+            pdfIngreso(id){
+                window.open('http://127.0.0.1:8000/ingreso/pdf/'+ id + ',' + '_blank');
             },
             buscarArticulo(){
                 let me=this;

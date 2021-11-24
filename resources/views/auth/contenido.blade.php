@@ -12,14 +12,12 @@
   <title>Autopartes - "Richard"</title>
 
   <link href="css/plantilla.css" rel="stylesheet">
-
-
 </head> 
 
 <body class="app flex-row align-items-center">
   <section class="banner">
    <div class="banner-content">
-     <h1>Bienvenidos a la Empresa Importadora de Autopartes y Motores</h1>
+     <h1>Bienvenidos a la Empresa Importadora de Autopartes Richard</h1>
       @yield('login')
    </div>
   </section>

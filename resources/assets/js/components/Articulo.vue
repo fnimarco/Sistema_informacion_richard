@@ -29,56 +29,54 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Opciones</th>
-                                        <th>Código</th>
-                                        <th>Nombre</th>
-                                        <th>Categoría</th>
-                                        <th>Precio Venta</th>
-                                        <th>Stock</th>
-                                        <th>Descripción</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="articulo in arrayArticulo" :key="articulo.id">
-                                        <td>
-                                            <button type="button" @click="abrirModal('articulo','actualizar',articulo)" class="btn btn-warning btn-sm">
-                                            <i class="icon-pencil"></i>
-                                            </button> &nbsp;
-                                            <template v-if="articulo.condicion">
-                                                <button type="button" class="btn btn-danger btn-sm" @click="desactivarArticulo(articulo.id)">
-                                                    <i class="icon-trash"></i>
-                                                </button>
-                                            </template>
-                                            <template v-else>
-                                                <button type="button" class="btn btn-info btn-sm" @click="activarArticulo(articulo.id)">
-                                                    <i class="icon-check"></i>
-                                                </button>
-                                            </template>
-                                        </td>
-                                        <td v-text="articulo.codigo"></td>
-                                        <td v-text="articulo.nombre"></td>
-                                        <td v-text="articulo.nombre_categoria"></td>
-                                        <td v-text="articulo.precio_venta"></td>
-                                        <td v-text="articulo.stock"></td>
-                                        <td v-text="articulo.descripcion"></td>
-                                        <td>
-                                            <div v-if="articulo.condicion">
-                                                <span class="badge badge-success">Activo</span>
-                                            </div>
-                                            <div v-else>
-                                                <span class="badge badge-danger">Desactivado</span>
-                                            </div>
-                                            
-                                        </td>
-                                    </tr>                                
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Opciones</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Precio Venta</th>
+                                    <th>Stock</th>
+                                    <th>Descripción</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="articulo in arrayArticulo" :key="articulo.id">
+                                    <td>
+                                        <button type="button" @click="abrirModal('articulo','actualizar',articulo)" class="btn btn-warning btn-sm">
+                                          <i class="icon-pencil"></i>
+                                        </button> &nbsp;
+                                        <template v-if="articulo.condicion">
+                                            <button type="button" class="btn btn-danger btn-sm" @click="desactivarArticulo(articulo.id)">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </template>
+                                        <template v-else>
+                                            <button type="button" class="btn btn-info btn-sm" @click="activarArticulo(articulo.id)">
+                                                <i class="icon-check"></i>
+                                            </button>
+                                        </template>
+                                    </td>
+                                    <td v-text="articulo.codigo"></td>
+                                    <td v-text="articulo.nombre"></td>
+                                    <td v-text="articulo.nombre_categoria"></td>
+                                    <td v-text="articulo.precio_venta"></td>
+                                    <td v-text="articulo.stock"></td>
+                                    <td v-text="articulo.descripcion"></td>
+                                    <td>
+                                        <div v-if="articulo.condicion">
+                                            <span class="badge badge-success">Activo</span>
+                                        </div>
+                                        <div v-else>
+                                            <span class="badge badge-danger">Desactivado</span>
+                                        </div>
+                                        
+                                    </td>
+                                </tr>                                
+                            </tbody>
+                        </table>
                         <nav>
                             <ul class="pagination">
                                 <li class="page-item" v-if="pagination.current_page > 1">
@@ -92,7 +90,6 @@
                                 </li>
                             </ul>
                         </nav>
-                      
                     </div>
                 </div>
                 <!-- Fin ejemplo de tabla Listado -->
@@ -254,7 +251,7 @@
                 });
             },
             cargarPdf(){
-                window.open('http://localhost:8000/articulo/listarPdf','_blank');
+                window.open('/articulo/listarPdf','_blank');
             },
             selectCategoria(){
                 let me=this;
